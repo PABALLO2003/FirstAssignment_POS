@@ -1,17 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/21"
-      xmlns:fx="http://javafx.com/fxml/21"
-      fx:controller="com.example.assignmentone.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/21"
+            fx:controller="com.example.assignmentone.RestaurantController">
 
-    <Label fx:id="welcomeText" text="Welcome to Food Restaurant System!"/>
-    <Button text="Start Ordering" onAction="#onHelloButtonClick"/>
-</VBox>
+    <top>
+        <HBox style="-fx-background-color: #2c3e50;" alignment="CENTER_LEFT" spacing="20">
+            <padding>
+                <Insets top="15" right="20" bottom="15" left="20"/>
+            </padding>
+            <Label text="🍔 Pablw's  Yummy Delicacy  🥞🥗🥩🍜🍛🧁🍕" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: gold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="timeLabel" style="-fx-text-fill: white; -fx-font-size: 16;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="20">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <TabPane>
+                <Tab text="🍽️ Dinner" closable="false"/>
+                <Tab text="🍰 Dessert" closable="false"/>
+                <Tab text="🥤 Drinks" closable="false"/>
+            </TabPane>
+
+            <VBox style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #bdc3c7;">
+                <padding>
+                    <Insets top="15" right="15" bottom="15" left="15"/>
+                </padding>
+                <Label text="Current Order" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+                <ListView fx:id="orderListView" prefHeight="150"/>
+                <HBox alignment="CENTER_RIGHT">
+                    <Label text="Total: " style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+                    <Label fx:id="totalLabel" text="M0.00" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: green;"/>
+                </HBox>
+                <Button fx:id="clearOrderButton" text="Clear Order" style="-fx-background-color: #e74c3c; -fx-text-fill: white;"/>
+            </VBox>
+        </VBox>
+    </center>
+
+    <right>
+        <VBox spacing="15" style="-fx-background-color: #34495e;" prefWidth="300">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Label text="Payment" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Cash Paid/Amount Tendered:" style="-fx-text-fill: white;"/>
+            <TextField fx:id="cashField" promptText="Enter amount"/>
+            <Label text="Change:" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+            <Label fx:id="changeLabel" text="M0.00" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: gold;"/>
+            <Button fx:id="calculateButton" text="Calculate Change" style="-fx-background-color: #f39c12; -fx-text-fill: white;" maxWidth="Infinity"/>
+            <Button fx:id="completeButton" text="Complete Order" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" maxWidth="Infinity"/>
+        </VBox>
+    </right>
+
+</BorderPane>
